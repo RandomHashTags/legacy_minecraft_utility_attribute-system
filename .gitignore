@@ -1,0 +1,7 @@
+.idea/**
+.gradle/**
+attributesystem-common/**
+attributesystem-spigot/build/**
+attributesystem-spigot/out/**
+attributesystem-sponge/build/**
+attributesystem-sponge/out/**
