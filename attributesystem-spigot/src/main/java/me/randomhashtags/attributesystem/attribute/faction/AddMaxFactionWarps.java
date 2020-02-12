@@ -1,8 +1,8 @@
 package me.randomhashtags.attributesystem.attribute.faction;
 
 import com.massivecraft.factions.Faction;
-import me.randomhashtags.randompackage.attribute.AbstractEventAttribute;
-import me.randomhashtags.randompackage.attributesys.PendingEventAttribute;
+import me.randomhashtags.attributesystem.attribute.AbstractEventAttribute;
+import me.randomhashtags.attributesystem.PendingEventAttribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 

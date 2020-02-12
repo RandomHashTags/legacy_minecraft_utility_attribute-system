@@ -2,7 +2,7 @@ package me.randomhashtags.attributesystem.attribute;
 
 import me.randomhashtags.randompackage.addon.InventoryPet;
 import me.randomhashtags.attributesystem.PendingEventAttribute;
-import me.randomhashtags.randompackage.util.RPItemStack;
+import me.randomhashtags.attributesystem.util.RPItemStack;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;

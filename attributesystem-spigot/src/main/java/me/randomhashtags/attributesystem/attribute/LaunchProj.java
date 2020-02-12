@@ -17,18 +17,18 @@ public class LaunchProj extends AbstractEventAttribute {
         final Event event = pending.getEvent();
         final HashMap<String, Entity> entities = pending.getEntities();
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
-        Vector v = null;
+        Vector vector = null;
         if(event instanceof ProjectileLaunchEvent) {
-            v = ((ProjectileLaunchEvent) event).getEntity().getVelocity();
+            vector = ((ProjectileLaunchEvent) event).getEntity().getVelocity();
         }
-        for(Entity e : recipientValues.keySet()) {
-            String value = recipientValues.get(e);
-            if(value != null && e instanceof LivingEntity) {
-                final LivingEntity l = (LivingEntity) e;
+        for(Entity entity : recipientValues.keySet()) {
+            String value = recipientValues.get(entity);
+            if(value != null && entity instanceof LivingEntity) {
+                final LivingEntity l = (LivingEntity) entity;
                 value = replaceValue(entities, value, valueReplacements);
                 final EntityType type = EntityType.valueOf(value.toUpperCase());
                 final Projectile proj = (Projectile) l.getWorld().spawnEntity(l.getEyeLocation(), type);
-                if(v != null) proj.setVelocity(v);
+                if(vector != null) proj.setVelocity(vector);
                 proj.setShooter(l);
             }
         }

@@ -10,10 +10,10 @@ public class SetAir extends AbstractEventAttribute {
     @Override
     public void execute(PendingEventAttribute pending) {
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
-        for(Entity e : recipientValues.keySet()) {
-            if(e instanceof Player) {
-                final Player player = (Player) e;
-                final int air = player.getRemainingAir(), max = player.getMaximumAir(), total = (int) evaluate(recipientValues.get(e).replace("air", Integer.toString(air)));
+        for(Entity entity : recipientValues.keySet()) {
+            if(entity instanceof Player) {
+                final Player player = (Player) entity;
+                final int air = player.getRemainingAir(), max = player.getMaximumAir(), total = (int) evaluate(recipientValues.get(entity).replace("air", Integer.toString(air)));
                 player.setRemainingAir(Math.min(total, max));
             }
         }

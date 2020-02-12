@@ -10,10 +10,10 @@ public class SetXp extends AbstractEventAttribute {
     @Override
     public void execute(PendingEventAttribute pending) {
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
-        for(Entity e : recipientValues.keySet()) {
-            if(e instanceof Player) {
-                final Player player = (Player) e;
-                setTotalExperience(player, (int) evaluate(recipientValues.get(e).replace("xp", Integer.toString(getTotalExperience(player)))));
+        for(Entity entity : recipientValues.keySet()) {
+            if(entity instanceof Player) {
+                final Player player = (Player) entity;
+                setTotalExperience(player, (int) evaluate(recipientValues.get(entity).replace("xp", Integer.toString(getTotalExperience(player)))));
             }
         }
     }

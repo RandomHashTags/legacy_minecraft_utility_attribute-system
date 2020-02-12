@@ -12,11 +12,11 @@ public class Teleport extends AbstractEventAttribute {
     public void execute(PendingEventAttribute pending, HashMap<String, String> valueReplacements) {
         final HashMap<String, Entity> entities = pending.getEntities();
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
-        for(Entity e : recipientValues.keySet()) {
-            final String value = replaceValue(entities, recipientValues.get(e), valueReplacements);
+        for(Entity entity : recipientValues.keySet()) {
+            final String value = replaceValue(entities, recipientValues.get(entity), valueReplacements);
             final Location l = toLocation(value);
             if(l != null) {
-                e.teleport(l, PlayerTeleportEvent.TeleportCause.PLUGIN);
+                entity.teleport(l, PlayerTeleportEvent.TeleportCause.PLUGIN);
             }
         }
     }

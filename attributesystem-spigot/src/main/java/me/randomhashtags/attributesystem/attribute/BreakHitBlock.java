@@ -11,9 +11,9 @@ public class BreakHitBlock extends AbstractEventAttribute {
         final Event event = pending.getEvent();
         if(event instanceof PlayerInteractEvent) {
             final PlayerInteractEvent e = (PlayerInteractEvent) event;
-            final Block b = e.getClickedBlock();
-            if(b != null) {
-                b.breakNaturally();
+            final Block block = e.getClickedBlock();
+            if(block != null) {
+                block.breakNaturally();
             }
         }
     }

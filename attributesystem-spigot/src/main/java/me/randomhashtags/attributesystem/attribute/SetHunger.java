@@ -10,11 +10,11 @@ public class SetHunger extends AbstractEventAttribute {
     @Override
     public void execute(PendingEventAttribute pending) {
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
-        for(Entity e : recipientValues.keySet()) {
-            final Player player = e instanceof Player ? (Player) e : null;
+        for(Entity entity : recipientValues.keySet()) {
+            final Player player = entity instanceof Player ? (Player) entity : null;
             if(player != null) {
                 final int lvl = player.getFoodLevel();
-                player.setFoodLevel((int) evaluate(recipientValues.get(e).replace("hunger", Integer.toString(lvl))));
+                player.setFoodLevel((int) evaluate(recipientValues.get(entity).replace("hunger", Integer.toString(lvl))));
             }
         }
     }

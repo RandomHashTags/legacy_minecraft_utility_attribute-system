@@ -10,8 +10,8 @@ public class HitBlock extends AbstractEventCondition {
     public boolean check(Event event, String value) {
         final PlayerInteractEvent e = event instanceof PlayerInteractEvent ? (PlayerInteractEvent) event : null;
         if(e != null) {
-            final Block b = e.getClickedBlock();
-            return b != null && b.getType().name().endsWith(value.toUpperCase());
+            final Block block = e.getClickedBlock();
+            return block != null && block.getType().name().endsWith(value.toUpperCase());
         }
         return false;
     }

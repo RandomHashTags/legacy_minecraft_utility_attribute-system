@@ -1,6 +1,6 @@
 package me.randomhashtags.attributesystem.attribute.condition;
 
-import me.randomhashtags.randompackage.attribute.AbstractEventCondition;
+import me.randomhashtags.attributesystem.attribute.AbstractEventCondition;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 

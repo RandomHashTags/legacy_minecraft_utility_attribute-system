@@ -15,18 +15,17 @@ public class DropItem extends AbstractEventAttribute {
     public void execute(PendingEventAttribute pending) {
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
         for(Entity e : recipientValues.keySet()) {
-            dropitem(e, recipientValues.get(e).replace("entity", e.getName()));
+            dropItem(e, recipientValues.get(e).replace("entity", e.getName()), true);
         }
     }
     @Override
     public void executeAt(HashMap<Location, String> locations) {
         for(Location l : locations.keySet()) {
-            dropitem(l, locations.get(l));
+            dropItem(l, locations.get(l), false);
         }
     }
 
-    private void dropitem(Object o, String value) {
-        final boolean isEntity = o instanceof Entity;
+    private void dropItem(Object o, String value, boolean isEntity) {
         final Entity e = isEntity ? (Entity) o : null;
         final Location l = isEntity ? e.getLocation() : (Location) o;
 

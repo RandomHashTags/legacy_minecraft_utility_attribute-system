@@ -13,24 +13,23 @@ public class PlaySound extends AbstractEventAttribute {
     @Override
     public void execute(PendingEventAttribute pending) {
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
-        for(Entity e : recipientValues.keySet()) {
-            playsound(e, recipientValues.get(e));
+        for(Entity entity : recipientValues.keySet()) {
+            playsound(entity, recipientValues.get(entity), true);
         }
     }
     @Override
     public void executeAt(HashMap<Location, String> locations) {
         for(Location l : locations.keySet()) {
-            playsound(l, locations.get(l));
+            playsound(l, locations.get(l), false);
         }
     }
-    private void playsound(Object obj, String value) {
-        final boolean isPlayer = obj instanceof Player;
-        final Player p = isPlayer ? (Player) obj : null;
-        final Location l = isPlayer ? p.getLocation() : (Location) obj;
+    private void playsound(Object obj, String value, boolean isEntity) {
+        final Player p = isEntity ? (Player) obj : null;
+        final Location l = isEntity ? p.getLocation() : (Location) obj;
 
         final String[] a = value.split(":");
         final int count = a.length, plays = count >= 4 ? (int) evaluate(a[3]) : 1;
-        final boolean world = !isPlayer || count >= 5 && Boolean.parseBoolean(a[4]);
+        final boolean world = !isEntity || count >= 5 && Boolean.parseBoolean(a[4]);
         final World w = l.getWorld();
         final Sound s = Sound.valueOf(a[0].toUpperCase());
         final float f1 = (float) evaluate(a[1]), f2 = (float) evaluate(a[2]);

@@ -13,14 +13,14 @@ public class SetBlock extends AbstractEventAttribute implements TemporaryBlocks 
         for(Location l : locations.keySet()) {
             final String[] values = locations.get(l).split(":");
 
-            final UMaterial u = UMaterial.match(values[0].toUpperCase());
-            if(u != null) {
+            final UMaterial umaterial = UMaterial.match(values[0].toUpperCase());
+            if(umaterial != null) {
                 final Block b = l.getBlock();
                 final BlockState state = b.getState();
                 final UMaterial previous = UMaterial.match(b.getType().name(), state.getRawData());
-                b.setType(u.getMaterial());
+                b.setType(umaterial.getMaterial());
                 if(LEGACY) {
-                    state.setRawData(u.getData());
+                    state.setRawData(umaterial.getData());
                     state.update(true);
                 }
 

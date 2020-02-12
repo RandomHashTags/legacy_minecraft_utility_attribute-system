@@ -2,7 +2,7 @@ package me.randomhashtags.attributesystem.attribute.condition;
 
 import me.randomhashtags.randompackage.addon.CustomEnchant;
 import me.randomhashtags.randompackage.api.CustomEnchants;
-import me.randomhashtags.randompackage.attribute.AbstractEventCondition;
+import me.randomhashtags.attributesystem.attribute.AbstractEventCondition;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.EntityEquipment;

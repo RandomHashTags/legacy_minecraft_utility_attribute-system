@@ -9,9 +9,9 @@ public class Remove extends AbstractEventAttribute {
     @Override
     public void execute(PendingEventAttribute pending) {
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
-        for(Entity e : recipientValues.keySet()) {
-            if(Boolean.parseBoolean(recipientValues.get(e))) {
-                e.remove();
+        for(Entity entity : recipientValues.keySet()) {
+            if(Boolean.parseBoolean(recipientValues.get(entity))) {
+                entity.remove();
             }
         }
     }

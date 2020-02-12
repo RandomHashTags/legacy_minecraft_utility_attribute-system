@@ -1,8 +1,8 @@
 package me.randomhashtags.attributesystem.attribute.mcmmo;
 
 import com.gmail.nossr50.events.experience.McMMOPlayerXpGainEvent;
-import me.randomhashtags.randompackage.attribute.AbstractEventAttribute;
-import me.randomhashtags.randompackage.attributesys.PendingEventAttribute;
+import me.randomhashtags.attributesystem.attribute.AbstractEventAttribute;
+import me.randomhashtags.attributesystem.PendingEventAttribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.Event;
 

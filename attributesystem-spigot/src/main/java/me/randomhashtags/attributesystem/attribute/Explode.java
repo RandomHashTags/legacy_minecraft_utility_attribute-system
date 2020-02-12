@@ -10,9 +10,9 @@ public class Explode extends AbstractEventAttribute {
         for(Location l : locations.keySet()) {
             final String v = locations.get(l);
             if(v != null) {
-                final String[] s = v.split(":");
-                final int size = s.length;
-                l.getWorld().createExplosion(l.getX(), l.getY(), l.getZ(), (float) evaluate(s[1]), size >= 3 && Boolean.parseBoolean(s[2]), size >= 4 && Boolean.parseBoolean(s[3]));
+                final String[] values = v.split(":");
+                final int size = values.length;
+                l.getWorld().createExplosion(l.getX(), l.getY(), l.getZ(), (float) evaluate(values[1]), size >= 3 && Boolean.parseBoolean(values[2]), size >= 4 && Boolean.parseBoolean(values[3]));
             }
         }
     }

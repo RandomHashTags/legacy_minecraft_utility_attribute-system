@@ -12,9 +12,9 @@ public class RemoveFromList extends AbstractEventAttribute implements Listable {
         final HashMap<Entity, String> recipientValues = pending.getRecipientValues();
         for(Entity entity : recipientValues.keySet()) {
             if(entity != null) {
-                final UUID u = entity.getUniqueId();
-                if(LIST.containsKey(u)) {
-                    LIST.get(u).remove(recipientValues.get(entity));
+                final UUID uuid = entity.getUniqueId();
+                if(LIST.containsKey(uuid)) {
+                    LIST.get(uuid).remove(recipientValues.get(entity));
                 }
             }
         }

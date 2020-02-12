@@ -10,20 +10,20 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.util.HashMap;
 
 public class Freeze extends AbstractEventAttribute {
-    private static HashMap<Player, TObject> tasks;
+    private static HashMap<Player, TObject> TASKS;
     @Override
     public void load() {
         super.load();
-        tasks = new HashMap<>();
+        TASKS = new HashMap<>();
     }
     @Override
     public void unload() {
-        for(Player p : tasks.keySet()) {
-            final TObject t = tasks.get(p);
+        for(Player p : TASKS.keySet()) {
+            final TObject t = TASKS.get(p);
             SCHEDULER.cancelTask((int) t.getFirst());
             p.setWalkSpeed((float) t.getSecond());
         }
-        tasks = null;
+        TASKS = null;
     }
     @Override
     public void execute(PendingEventAttribute pending) {
@@ -31,11 +31,11 @@ public class Freeze extends AbstractEventAttribute {
         final PlayerQuitEvent q = event instanceof PlayerQuitEvent ? (PlayerQuitEvent) event : null;
         if(q != null) {
             final Player player = q.getPlayer();
-            final TObject tobj = tasks.getOrDefault(player, null);
+            final TObject tobj = TASKS.getOrDefault(player, null);
             if(tobj != null) {
                 SCHEDULER.cancelTask((int) tobj.getFirst());
                 player.setWalkSpeed((float) tobj.getSecond());
-                tasks.remove(player);
+                TASKS.remove(player);
             }
         }
 
@@ -47,9 +47,9 @@ public class Freeze extends AbstractEventAttribute {
                 player.setWalkSpeed(0);
                 final TObject t = new TObject(SCHEDULER.scheduleSyncDelayedTask(RANDOM_PACKAGE, () -> {
                     player.setWalkSpeed(previousWalkSpeed);
-                    tasks.remove(player);
+                    TASKS.remove(player);
                 }, (int) evaluate(recipientValues.get(entity))), previousWalkSpeed, null);
-                tasks.put(player, t);
+                TASKS.put(player, t);
             }
         }
     }
